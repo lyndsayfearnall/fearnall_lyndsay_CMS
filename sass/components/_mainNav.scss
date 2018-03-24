@@ -1,9 +1,18 @@
-#mainNav .navbar-brand{
+#mainNav{
+  a{
   color: white;
-  margin-bottom: 0px;
-  text-transform: uppercase;
-}
+  @include transition(color .3s ease-out);
+  &:hover{
+    color: $light-purple;
+    }
+  }
 
-#hamburger{
-  color: white;
+  .navbar-brand{
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    font-family: $qs;
+  }
+  #hamburger{
+    color: white;
+  }
 }

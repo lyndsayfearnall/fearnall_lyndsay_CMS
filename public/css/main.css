@@ -1,2 +1,2 @@
-@import url("https://fonts.googleapis.com/css?family=Quicksand|Roboto:300");#mainNav .navbar-brand{color:white;margin-bottom:0px;text-transform:uppercase}#hamburger{color:white}
+@import url("https://fonts.googleapis.com/css?family=Quicksand|Roboto:300");h1,h2,h3,h4,h5,h6{font-family:"Quicksand",Arial,sans-serif}#mainNav a{color:white;-webkit-transition:color 0.3s ease-out;-moz-transition:color 0.3s ease-out;-ms-transition:color 0.3s ease-out;-moz-transition:color 0.3s ease-out;transition:color 0.3s ease-out}#mainNav a:hover{color:#c992b9}#mainNav .navbar-brand{margin-bottom:0px;text-transform:uppercase;font-family:"Quicksand",Arial,sans-serif}#mainNav #hamburger{color:white}
 /*# sourceMappingURL=main.css.map */
