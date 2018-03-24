@@ -1,7 +1,7 @@
 #mainNav{
   background-color: $purple;
   a{
-    color: white;
+    color: $light-grey;
     font-family: $robot;
     @include transition(color .3s ease-out);
     &:hover{
@@ -15,6 +15,6 @@
     font-family: $qs;
   }
   #hamburger{
-    color: white;
+    color: $light-grey;
   }
 }

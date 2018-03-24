@@ -5,3 +5,15 @@
   -moz-transition: $arg;
   transition: $arg;
 }
+
+@mixin radius($num) {
+  -webkit-border-radius: $num;
+  -moz-border-radius: $num;
+  border-radius: $num;
+}
+
+@mixin shadow($box) {
+  -webkit-box-shadow: $box;
+  -moz-box-shadow: $box;
+  box-shadow: $box;
+}
