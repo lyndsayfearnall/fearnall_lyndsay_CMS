@@ -1,0 +1,27 @@
+#adminNav{
+  background-color: $light-purple;
+  a{
+    color: white;
+    font-family: $robot;
+    @include transition(color .3s ease-in);
+    &:hover{
+      color: $purple;
+      }
+  }
+  .navbar-brand{
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    font-family: $qs;
+  }
+  .material-icons{
+    vertical-align: bottom;
+    padding-right: 5px;
+  }
+  #hamburger{
+    color: white;
+    @include transition(color .3s ease-in);
+    &:hover{
+      color: $purple;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+#sideBar{
+  background-color: $charcoal;
+  ul{
+    list-style-type: none;
+  }
+  a{
+    color: $light-grey;
+    @include transition(color .3s ease-in);
+    &:hover{
+      color: $light-purple;
+    }
+  }
+  .material-icons{
+    vertical-align: bottom;
+    padding-bottom: 2px;
+    padding-right: 15px;
+  }
+}
