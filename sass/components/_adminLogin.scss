@@ -1,0 +1,25 @@
+#adminLogin {
+  #loginForm{
+    background-color: $light-grey;
+    margin-top: 15%;
+    padding: 40px;
+    @include radius(4px);
+    @include shadow(1px 2px 20px 0px rgba(0,0,0,0.2));
+    h1{
+      font-size: 1.5rem;
+    }
+    p{
+      font-size: .85rem;
+      margin-bottom: 0px;
+    }
+    #login{
+      background-color: $purple;
+      color: $light-grey;
+      padding: 12px;
+    }
+    .input-group-text{
+      background-color: lighten($charcoal, 50%);
+      color: white;
+    }
+  }
+}
