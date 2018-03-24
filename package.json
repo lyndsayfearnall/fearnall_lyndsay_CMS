@@ -1,0 +1,16 @@
+{
+  "name": "fearnall_lyndsay_cms",
+  "version": "1.0.0",
+  "description": "CMS project for MMED 3014",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lyndsay",
+  "license": "MIT",
+  "dependencies": {
+    "grunt": "^1.0.2",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAQ,2EAAmE,CCA3E,sBAAsB,CACpB,KAAK,CAAE,KAAK,CACZ,aAAa,CAAE,GAAG,CAClB,cAAc,CAAE,SAAS,CAG3B,UAAU,CACR,KAAK,CAAE,KAAK",
+"sources": ["../../sass/base/_fonts.scss","../../sass/components/_mainNav.scss"],
+"names": [],
+"file": "main.css"
+}
