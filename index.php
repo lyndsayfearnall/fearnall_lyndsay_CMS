@@ -11,7 +11,7 @@
 		$col = "movies_id";
 		$col2 = "genre_id";
 		$col3 = "genre_name";
-		$filter = "action";
+		$filter = $_GET['filter'];
 		$getMovies = filterResults($tbl, $tbl2, $tbl3, $col, $col2, $col3, $filter);
 	}else{
 		$tbl = "tbl_movies";
