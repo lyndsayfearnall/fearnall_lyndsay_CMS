@@ -6,10 +6,10 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="filterNav navbar-nav ml-auto">
-      <li class="nav-item active"><a class="nav-link" href="index.php?filter=action">Action</a></li>
-      <li class="nav-item active"><a class="nav-link" href="index.php?filter=comedy">Comedy</a></li>
-      <li class="nav-item active"><a class="nav-link" href="index.php?filter=family">Family</a></li>
-      <li class="nav-item active"><a class="nav-link" href="index.php">All</a></li>
+      <li class="nav-item"><a class="nav-link" href="index.php?filter=action">Action</a></li>
+      <li class="nav-item"><a class="nav-link" href="index.php?filter=comedy">Comedy</a></li>
+      <li class="nav-item"><a class="nav-link" href="index.php?filter=family">Family</a></li>
+      <li class="nav-item"><a class="nav-link" href="index.php">All</a></li>
     </ul>
   </div>
 </nav>

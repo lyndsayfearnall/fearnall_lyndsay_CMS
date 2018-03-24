@@ -3,26 +3,9 @@
   error_reporting(E_ALL);
 
   require_once('phpscripts/config.php');
-  confirm_logged_in();
 
-  $currentTimestamp = date('l F d, Y');
-  $currentHour = date('G');
-  //echo $currentHour;
-  if ($currentHour >= 0){ //midnight till 5 am
-    $greeting = "Sleep is for the weak, {$_SESSION['user_name']}.";
-  }
-   if ($currentHour >= 6) { //6-12
-    $greeting= "Good morning {$_SESSION['user_name']}!";
-  }
-  if ($currentHour >= 12){
-     $greeting = "Good afternoon {$_SESSION['user_name']}!";
-  }
-  if ($currentHour >= 17){
-    $greeting = "Good evening {$_SESSION['user_name']}!";
-   }
-   if ($currentHour >= 22){
-     $greeting = "Hey {$_SESSION['user_name']}, it's getting kinda late.";
-   }
+  $tbl = "tbl_user";
+  $users = getAll($tbl);
 
  ?>
 
@@ -50,11 +33,14 @@
        <div class="col-10 adminMainBody mt-2">
          <div class="ml-2 mt-4 card">
            <div class="card-header">
-             <h1><?php echo "$greeting &nbsp";?>Welcome to your Moviez R Cool admin page.</h1>
+             <h1>Manage Users</h1>
            </div>
            <div class="card-body">
-             <p>Today is <?php echo "$currentTimestamp"; ?></p>
-             <p><small>The date and time of your last session login was:  <?php echo "&nbsp{$_SESSION['user_date']}"; ?></p>
+             <?php
+              while($row = mysqli_fetch_array($users)){
+                echo "<p>{$row['user_fname']}</p> <a href=\"phpscripts/caller.php?caller_id=delete&id={$row['user_id']}\">Delete User</a></br>";
+              }
+            ?>
            </div>
          </div>
        </div>
