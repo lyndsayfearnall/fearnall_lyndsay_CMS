@@ -1,0 +1,40 @@
+.userList{
+  padding: 5px 15px 0px 15px;
+  margin: 5px 10px 10px 5px;
+  font-family: $robot;
+  a{
+    color: $charcoal;
+    font-weight: 600;
+  }
+  #tableHeading{
+    background-color: $grey;
+    color: white;
+  }
+  li{
+    list-style-type: none;
+    padding: 5px;
+    &:nth-child(odd){
+       background: $light-grey;
+    }
+  }
+  .remove{
+    @include transition(color .3s ease);
+    &:hover{
+      color: $light-purple;
+    }
+  }
+  .material-icons{
+    vertical-align: bottom;
+    margin-right: 1rem;
+    margin-left: .25rem;
+    color: $light-purple;
+    font-size: 1.5em;
+  }
+  #addOne{
+    margin-top: .25rem;
+    font-size: 1.5em;
+      &:hover{
+        text-decoration: none;
+      }
+  }
+}

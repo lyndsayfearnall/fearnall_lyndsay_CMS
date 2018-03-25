@@ -4,8 +4,8 @@
 
   require_once('phpscripts/config.php');
 
-  $tbl = "tbl_user";
-  $users = getAll($tbl);
+  $tbl = "tbl_movies";
+  $movies = getAll($tbl);
 
  ?>
 
@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="../public/css/main.css">
-  <title>Manage Users</title>
+  <title>Edit Movies</title>
 </head>
 <body class="admin">
   <?php
@@ -33,40 +33,34 @@
        <div class="col-10 adminMainBody mt-1">
          <div class="ml-2 mt-4 mb-5 card">
            <div class="card-header">
-             <h1>Manage Admin Users</h1>
+             <h1>Edit Movies</h1>
            </div>
 
             <div class="card-body">
 
               <ul class="userList">
                 <div class="row" id="tableHeading">
-                  <div class="col-4">Name</div>
-                  <div class="col-4">User Level</div>
+                  <div class="col-4">Movie Title</div>
                 </div>
                 <?php
-                  while($row = mysqli_fetch_array($users)){
-                    if ($row['user_level'] == 1){
-                      $usrlvl = "Master";
-                    }else{
-                      $usrlvl = "Admin";
-                    }
+                  while($row = mysqli_fetch_array($movies)){
                     echo "
                       <li class=\"row\">
                         <div class=\"col-4\">
-                        {$row['user_fname']}&nbsp;&nbsp;
+                        {$row['movies_title']}&nbsp;&nbsp;
                         </div>
-                        <div class=\"col-4\">
-                        $usrlvl
+                        <div class=\"col-4 text-center\">
+                          <a class=\"edit\" href=\"\">Edit</a>
                         </div>
-                        <div class=\"col-4\">
-                        <a class=\"remove\" href=\"phpscripts/caller.php?caller_id=delete&id={$row['user_id']}\">Remove</a>
+                        <div class=\"col-4 text-center\">
+                          <a class=\"remove\" href=\"phpscripts/caller.php?caller_id=delete&id={$row['movies_id']}\">Remove</a>
                         </div>
                         </br>
                       </li>
                       ";
                     }
                 ?>
-                <a class="row" id="addOne" href="admin_addUser.php"><i class="material-icons">add_circle_outline</i>Add User</a>
+                <a class="row" id="addOne" href="admin_addMovie.php"><i class="material-icons">add_circle_outline</i>Add Movie</a>
               </ul>
 
             </div>
