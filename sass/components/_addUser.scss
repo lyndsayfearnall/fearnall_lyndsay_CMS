@@ -1,0 +1,18 @@
+#addUser{
+  form{
+    margin: 0 auto;
+    width: 75%;
+    font-family: $robot;
+    button{
+      margin-bottom: 1rem;
+    }
+    .btn-primary{
+      background-color: $purple;
+      border: 0px;
+      @include transition(color .3s all);
+      &:hover{
+        background-color: darken($purple, 10%);
+      }
+    }
+  }
+}
