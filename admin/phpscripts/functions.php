@@ -7,11 +7,11 @@
 		}
 	}
 
-	function multiReturns($value) {
-		$addPassed = $value;
-		$newResult = 7 + $addPassed;
-		$newResult2 = $value * 12;
-		//echo $newResult;
-		return array($newResult, $newResult2);
-	}
+	// function multiReturns($value) {
+	// 	$addPassed = $value;
+	// 	$newResult = 7 + $addPassed;
+	// 	$newResult2 = $value * 12;
+	// 	//echo $newResult;
+	// 	return array($newResult, $newResult2);
+	// }
  ?>

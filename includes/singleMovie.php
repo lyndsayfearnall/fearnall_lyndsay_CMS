@@ -6,17 +6,20 @@
 			$row=mysqli_fetch_array($getMovie);
 			echo "
       <div class=\"col-sm-12 mb-3\">
-        <h1>{$row['movies_title']}</h1>
+        <h1>{$row['movie_name']}</h1>
       </div>
 
-      <div class=\"col-sm-10 col-md-5 pb-5\">
-        <img src=\"images/dunkirk.jpg\" alt=\"{$row['movies_title']}\" width=\"90%\">
+      <div class=\"col-sm-10 col-md-7 pb-5\">
+
+        <video src=\"videos/{$row['movie_clip']}\" alt=\"{$row['movie_name']}\" width=\"100%\" autoplay>
+        </video>
       </div>
 
-      <div class=\"col-sm-12 col-md-7\">
-  			<p>Released in {$row['movies_year']}</p>
-        <p>Runtime: {$row['movies_runtime']}</p>
-  			<p>{$row['movies_storyline']}</p>
+      <div class=\"col-sm-12 col-md-5\">
+  			<p>Released in {$row['movie_year']}</p>
+        <p>{$row['movie_director']}</p>
+  			<p>{$row['movie_description']}</p>
+        <p>User rating: &nbsp {$row['movie_rating']}/10</p>
   			<a href=\"index.php\" class=\"btn\">Back to All Movies</a>
       </div>
 			";

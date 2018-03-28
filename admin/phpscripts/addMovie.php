@@ -1,5 +1,5 @@
 <?php
-  function addMovie($title, $coverImg, $year, $runtime, $storyline, $trailer, $release, $genList){
+  function addMovie($title, $coverImg, $year, $runtime, $storyline, $trailer, $release, $genre){
 		include('connect.php');
 
     if($_FILES['coverImg']['type'] == "image/jpeg" || $_FILES['coverImg']['type'] == "image/jpg" ){
@@ -10,6 +10,13 @@
           if(!copy($orig, $th_copy)){
             echo "failed to copy";
           }
+
+        if(move_uploaded_file($_FILES['trailer']['tmp_name'], $target)){
+              $orig = $target;
+              $th_copy = "../videos/TH_{$trailer['name']}"; //TH_ for thumbnail
+              if(!copy($orig, $th_copy)){
+                echo "failed to copy";
+              }
         $addstring = "INSERT INTO tbl_movies VALUES (NULL, '{$coverImg['name']}', '{$title}', '{$year}','{$runtime}', '{$storyline}', '{$trailer}', '{$release}')";
 
         $addresult = mysqli_query($link, $addstring);
@@ -19,11 +26,12 @@
           $row = mysqli_fetch_array($lastmovie);
           $lastId = $row['movies_id'];
 
-          $addgenre = "INSERT INTO tbl_mov_genre VALUES (NULL, {$lastId}, {$genList})"; //don't need quotes around $lastID and $genre because both are integers
+          $addgenre = "INSERT INTO tbl_mov_genre VALUES (NULL, {$lastId}, {$genre})"; //don't need quotes around $lastID and $genre because both are integers
           $genresult = mysqli_query($link, $addgenre);
-          redirect_to("admin_index.php");
+          redirect_to("admin_editMovies.php");
       }
     }
+  }
   }
   mysqli_close($link);
 }

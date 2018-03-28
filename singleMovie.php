@@ -6,7 +6,7 @@
 	if(isset($_GET['id'])) {
 		//get the movie
 		$tbl = "tbl_movies";
-		$col = "movies_id";
+		$col = "movie_id";
 		$id = $_GET['id'];
 		$getMovie = getSingle($tbl, $col, $id);
 	}

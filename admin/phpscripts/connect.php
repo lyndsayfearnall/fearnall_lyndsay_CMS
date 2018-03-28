@@ -2,7 +2,7 @@
 	$user = "root";
 	$pass = "root";
 	$url = "localhost";
-	$db = "db_movies";
+	$db = "db_movies_cms";
 
 	$link = mysqli_connect($url, $user, $pass, $db);
 
