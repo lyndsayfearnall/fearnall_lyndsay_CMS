@@ -12,11 +12,12 @@
 
 	 if(isset($_POST['submit'])){
 	 	$fname = trim($_POST['fname']);
+    $lname = trim($_POST['lname']);
 		$username = trim($_POST['username']);
 		$password = trim($_POST['password']);
 		$email = trim($_POST['email']);
 	 	$userlvl = $_POST['userlvl'];
-	 	$result = editUser($id, $fname, $username, $password, $email);
+	 	$result = editUser($id, $fname, $lname, $username, $password, $email);
 			$message = $result;
 	}
 
@@ -64,6 +65,11 @@
                 <div class="form-group">
                   <label>First name</label>
               		<input class="input-group=text form-control" placeholder="First name" type="text" name="fname" value="<?php echo $found_user['user_fname'];?>">
+                </div>
+
+                <div class="form-group">
+                  <label>Last name</label>
+                  <input class="input-group=text form-control" placeholder="Last name" type="text" name="lname" value="<?php echo $found_user['user_lname'];?>">
                 </div>
 
                 <div class="form-group">

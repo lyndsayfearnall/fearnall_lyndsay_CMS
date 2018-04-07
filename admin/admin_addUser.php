@@ -6,6 +6,7 @@
 
   if(isset($_POST['submit'])){
    $fname = trim($_POST['fname']);
+   $lname = trim($_POST['lname']);
    $username = trim($_POST['username']);
    $password = trim($_POST['password']);
    $email = trim($_POST['email']);
@@ -13,7 +14,7 @@
    if(empty($userlvl)){
      $message = "Please select a user level.";
    }else{
-     $result = createUser($fname, $username, $password, $email, $userlvl);
+     $result = createUser($fname, $lname, $username, $password, $email, $userlvl);
      $message = $result;
    }
  }
@@ -52,6 +53,11 @@
                 <div class="form-group">
                   <label>First name</label>
               		<input class="input-group=text form-control" placeholder="First name" type="text" name="fname" value="<?php if(!empty($fname)){echo $fname;} ?>">
+                </div>
+
+                <div class="form-group">
+                  <label>Last name</label>
+              		<input class="input-group=text form-control" placeholder="Last name" type="text" name="lname" value="<?php if(!empty($lname)){echo $lname;} ?>">
                 </div>
 
                 <div class="form-group">

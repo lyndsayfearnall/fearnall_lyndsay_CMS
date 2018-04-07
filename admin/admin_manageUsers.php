@@ -53,7 +53,7 @@
                     echo "
                       <li class=\"row\">
                         <div class=\"col-4\">
-                        {$row['user_fname']}&nbsp;&nbsp;
+                        {$row['user_fname']}&nbsp;{$row['user_lname']}&nbsp;
                         </div>
                         <div class=\"col-4\">
                         $usrlvl

@@ -4,21 +4,40 @@
 
   require_once('phpscripts/config.php');
 
-  $tbl = "tbl_genre";
-	$genQuery = getAll($tbl);
+  if(isset($_GET['id'])) {
+    $tbl= "tbl_movies";
+    $col = "movie_id";
+    $id = $_GET['id'];
+    $popForm = getSingle($tbl, $col, $id);
+    $foundMovie = mysqli_fetch_array($popForm, MYSQLI_ASSOC);
 
-	if(isset($_POST['submit'])){
-		 $title = $_POST['title'];
-		 // $poster = $_FILES['poster'];
-     // $trailer = $_FILES['trailer'];
-     $year = $_POST['year'];
-     $storyline = $_POST['storyline'];
-     $rating = $_POST['rating'];
-     $director = $_POST['director'];
-		 // $uploadMovie = addMovie($title, $poster, $trailer, $year, $storyline, $rating, $director);
-     $uploadMovie = addMovie($title, $year, $storyline, $rating, $director);
-		 $message = $uploadMovie;
-	}
+    if(isset($_POST['submit'])){
+
+      $id = $foundMovie['movie_id'];
+      $title = $_POST['title'];
+      // $poster = $_FILES['poster'];
+      // $trailer = $_FILES['trailer'];
+      $year = $_POST['year'];
+      $storyline = $_POST['storyline'];
+      $rating = $_POST['rating'];
+      $director = $_POST['director'];
+      // $updateMovie = updateMovie($title, $poster, $trailer, $year, $storyline, $rating, $director);
+      $updateMovie = updateMovie($id, $title, $year, $storyline, $rating, $director);
+      $message = $updateMovie;
+   }
+  }
+
+
+
+ //  if(isset($_POST['submit'])){
+ //   $fname = trim($_POST['fname']);
+ //   $username = trim($_POST['username']);
+ //   $password = trim($_POST['password']);
+ //   $email = trim($_POST['email']);
+ //   $userlvl = $_POST['userlvl'];
+ //   $result = editUser($id, $fname, $username, $password, $email);
+	// 		$message = $result;
+ // }
 
  ?>
 
@@ -31,10 +50,9 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="../public/css/main.css">
-  <title>Add Movie</title>
+  <title>Edit Movie</title>
 </head>
 <body class="admin">
-  <?php if(!empty($message)){echo $message;} ?>
   <?php
     include('../includes/adminNav.php');
    ?>
@@ -44,25 +62,24 @@
         include('../includes/adminSidebar.php')
        ?>
 
-       <div class="col-10 mt-1" id="addUser">
+       <div class="col-10 adminMainBody mt-1" id="addUser">
          <div class="ml-2 mt-4 mb-5 card">
            <div class="card-header">
-             <h1>Add a Movie</h1>
+             <h1>Edit <?php echo $foundMovie['movie_name'];?></h1>
            </div>
             <div class="card-body">
-
               <?php if(!empty($message)){echo $message;}?>
-            	<form action="admin_addMovie.php" method="post">
+            	<form action="admin_editMovie.php?id={$row['movie_id']}" method="post">
                 <div class="form-group">
                   <label>Movie Title</label>
-              		<input class="input-group=text form-control" placeholder="Movie Title" type="text" name="title">
+              		<input class="input-group=text form-control" placeholder="<?php echo $foundMovie['movie_name'];?>" type="text" name="title">
                 </div>
 
                 <!-- <div class="form-group">
                   <label>Poster Image</label>
                   <div class="custom-file">
-                      <input type="file" class="custom-file-input" name="poster">
-                      <label class="custom-file-label">Select a file</label>
+                      <input type="file" class="custom-file-input" name="coverImg">
+                      <label class="custom-file-label"><?php echo $foundMovie['movie_picture'];?></label>
                   </div>
                 </div>
 
@@ -70,24 +87,24 @@
                   <label>Trailer</label>
                   <div class="custom-file">
                       <input type="file" class="custom-file-input" name="trailer">
-                      <label class="custom-file-label">Select a file</label>
+                      <label class="custom-file-label"><?php echo $foundMovie['movie_clip'];?></label>
                   </div>
                 </div> -->
 
                 <div class="form-group">
                   <label>Year</label>
-                  <input class="input-group=text form-control" placeholder="Year" type="number" name="year">
+                  <input class="input-group=text form-control" placeholder="<?php echo $foundMovie['movie_year'];?>" type="number" name="year">
                 </div>
 
                 <div class="form-group">
                   <label>Storyline</label>
-                  <textarea class="form-control" name="storyline">Storyline</textarea>
+                  <textarea class="form-control" name="description"><?php echo $foundMovie['movie_description'];?></textarea>
                 </div>
 
                 <div class="form-group">
                   <label>Rating</label>
                   <select class="custom-select" name="rating">
-                     <option selected>Select a rating</option>
+                     <option selected><?php echo $foundMovie['movie_rating'];?></option>
                      <option value="1">1</option>
                      <option value="2">2</option>
                      <option value="3">3</option>
@@ -103,7 +120,7 @@
 
                 <div class="form-group">
                   <label>Movie director</label>
-                  <input class="input-group=text form-control" placeholder="Director" type="text" name="director">
+                  <input class="input-group=text form-control" placeholder="<?php echo $foundMovie['movie_director'];?>" type="text" name="director">
                 </div>
 
                 <!-- <div class="form-group">
@@ -119,8 +136,33 @@
                   </select>
                 </div> -->
 
-            		<button type="submit" name="submit" value="Update Movie" class="btn btn-primary">Add Movie</button>
+            		<button type="submit" name="submit" value="Update Movie" class="btn btn-primary">Update <?php echo $foundMovie['movie_name'];?></button>
             	</form>
+
+
+                <!-- <div class="form-group">
+                  <label>Username</label>
+              		 <input class="input-group=text form-control" placeholder="Username" type="text" name="username" value="<?php echo $found_user['user_name'];?>">
+                </div> -->
+
+                <!-- <div class="form-group">
+                  <label>Password</label>
+                  <input class="input-group=text form-control" placeholder="Password" type="password" name="password" value="<?php echo $found_user['user_pass'];?>">
+                </div> -->
+
+                <!-- <div class="form-group">
+                  <label>Email address</label>
+                  <input class="input-group=text form-control" placeholder="Email address" type="text" name="email" value="<?php echo $found_user['user_email'];?>">
+                </div> -->
+
+                <!-- <div class="form-group">
+                  <label for="userLevel">User Level</label>
+                  <select class="form-control" name="userlvl" id="userLevel">
+                    <option value="">Please select a user level</option>
+                    <option value="2">Web Admin</option>
+              			<option value="1">Web Master</option>
+                  </select>
+                </div> -->
 
             </div>
          </div>

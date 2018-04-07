@@ -13,8 +13,8 @@
         "
             <div class=\"col-12 col-md-6 col-lg-4 text-center pb-5\">
               <div class=\"posterCon pb-4\">
-                <h2 class=\"mb-3 pt-4\">{$row['movies_title']}</h2>
-                <a href=\"singleMovie.php?id={$row['movies_id']}\"><img src=\"images/dunkirk.jpg\" width=\"80%\"></a>
+                <h2 class=\"mb-3 pt-4\">{$row['movie_name']}</h2>
+                <a href=\"singleMovie.php?id={$row['movie_id']}\"><img src=\"images/{$row['movie_picture']}\" alt=\"{$row['movie_name']}\" width=\"90%\"></a>
               </div>
             </div>
         ";
