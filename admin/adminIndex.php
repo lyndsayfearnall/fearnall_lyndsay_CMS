@@ -5,23 +5,31 @@
   require_once('phpscripts/config.php');
   confirm_logged_in();
 
+  ini_set('display_errors', 1);
+  error_reporting(E_ALL);
+  require_once('phpscripts/config.php');
+  confirm_logged_in();
+
   $currentTimestamp = date('l F d, Y');
   $currentHour = date('G');
-  //echo $currentHour;
+  $fname = $_SESSION['user_name'];
+  $lname = $_SESSION['user_lname'];
+  $fullname = $fname.' '.$lname;
+
   if ($currentHour >= 0){ //midnight till 5 am
-    $greeting = "Sleep is for the weak, {$_SESSION['user_name']}.";
+    $greeting = "Sleep is for the weak, $fullname.";
   }
    if ($currentHour >= 6) { //6-12
-    $greeting= "Good morning {$_SESSION['user_name']}!";
+    $greeting= "Good morning $fullname !";
   }
   if ($currentHour >= 12){
-     $greeting = "Good afternoon {$_SESSION['user_name']}!";
+     $greeting = "Good afternoon $fullname!";
   }
   if ($currentHour >= 17){
-    $greeting = "Good evening {$_SESSION['user_name']}!";
+    $greeting = "Good evening $fullname!";
    }
    if ($currentHour >= 22){
-     $greeting = "Hey {$_SESSION['user_name']}, it's getting kinda late.";
+     $greeting = "Hey $fullname, it's getting kinda late.";
    }
 
  ?>
@@ -54,7 +62,7 @@
            </div>
            <div class="card-body">
              <p>Today is <?php echo "$currentTimestamp"; ?></p>
-             <p><small>The date and time of your last session login was:  <?php echo "&nbsp{$_SESSION['user_date']}"; ?></p>
+             <p><small>The date and time of your last session login was:  <?php echo " &nbsp{$_SESSION['user_date']}"; ?></p>
            </div>
          </div>
        </div>

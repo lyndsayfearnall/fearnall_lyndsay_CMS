@@ -2,7 +2,7 @@
 
   function logIn($username, $password, $ip, $timestamp){
     require_once('connect.php');
-    $username = mysqli_real_escape_string($link, $username); //real escape string will filter out certain characters, protects against sql injection
+    $username = mysqli_real_escape_string($link, $username); 
     $password = mysqli_real_escape_string($link, $password);
 
     //check for valid username and password
@@ -23,6 +23,7 @@
         //get and post both pass info through the url, unsafe/exposed information. Use session. Sessions are temporary, only exist on local level, don't use cookies when passing things from page to page
         $_SESSION['user_id'] = $id;//protected & safe, don't pass everything via sessions though (ex. username, user id)
         $_SESSION['user_name'] = $found_user['user_fname'];
+        $_SESSION['user_lname'] = $found_user['user_lname'];
         $_SESSION['user_date'] = $lastLogin;
         $_SESSION['login_attempts'] = $logins;
 

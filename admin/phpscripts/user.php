@@ -1,7 +1,7 @@
 <?php
-  function createUser($fname, $username, $password, $email, $userlvl) {
+  function createUser($fname, $lname, $username, $password, $email, $userlvl) {
     include('connect.php');
-    $userString = "INSERT INTO tbl_user VALUES(NULL, '{$fname}', '{$username}', '{$password}', '{$email}', NULL, '{$userlvl}', 'no', 0, 0)";
+    $userString = "INSERT INTO tbl_user VALUES(NULL, '{$fname}', '{$lname}', '{$username}', '{$password}', '{$email}', NULL, '{$userlvl}', 'no', 0, 0)";
     //echo $userString;
     $userQuery = mysqli_query($link, $userString);
     if($userQuery){
@@ -27,9 +27,9 @@
     mysqli_close($link);
   }
 
-  function editUser($id, $fname, $username, $password, $email){
+  function editUser($id, $fname, $lname, $username, $password, $email){
     include('connect.php');
-    $updatestring = "UPDATE tbl_user SET user_fname='{$fname}', user_name='{$username}', user_pass='{$password}', user_email='{$email}' WHERE user_id={$id}";
+    $updatestring = "UPDATE tbl_user SET user_fname='{$fname}', user_lname='{$lname}', user_name='{$username}', user_pass='{$password}', user_email='{$email}' WHERE user_id={$id}";
     //echo $updatestring;
     $updatequery = mysqli_query($link, $updatestring);
     if($updatequery){

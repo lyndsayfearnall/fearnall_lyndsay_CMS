@@ -47,13 +47,13 @@
                     echo "
                       <li class=\"row\">
                         <div class=\"col-4\">
-                        {$row['movies_title']}&nbsp;&nbsp;
+                        {$row['movie_name']}&nbsp;&nbsp;
                         </div>
                         <div class=\"col-4 text-center\">
-                          <a class=\"edit\" href=\"\">Edit</a>
+                          <a class=\"edit\" href=\"admin_editMovie.php?id={$row['movie_id']}\">Edit</a>
                         </div>
                         <div class=\"col-4 text-center\">
-                          <a class=\"remove\" href=\"phpscripts/caller.php?caller_id=delete&id={$row['movies_id']}\">Remove</a>
+                          <a class=\"remove\" href=\"phpscripts/caller.php?caller_id=deleteMovie&id={$row['movie_id']}\">Remove</a>
                         </div>
                         </br>
                       </li>
