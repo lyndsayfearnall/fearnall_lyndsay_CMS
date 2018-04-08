@@ -14,11 +14,13 @@
    if(empty($userlvl)){
      $message = "Please select a user level.";
    }else{
-     $result = createUser($fname, $lname, $username, $password, $email, $userlvl);
+     $password = generatePass(6);
+     $encryptPass = password_hash($password, PASSWORD_BCRYPT, array('cost'=>11));
+     $result = createUser($fname, $lname, $username, $encryptPass, $email, $userlvl);
      $message = $result;
+     $sendMail = sendUserMessage($fname, $username, $password, $email, $userlvl);
    }
  }
-
  ?>
 
 <!DOCTYPE html>

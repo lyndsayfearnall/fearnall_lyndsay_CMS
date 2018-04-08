@@ -15,6 +15,7 @@
     $lname = trim($_POST['lname']);
 		$username = trim($_POST['username']);
 		$password = trim($_POST['password']);
+    $password = password_hash($password, PASSWORD_BCRYPT, array('cost'=>11));
 		$email = trim($_POST['email']);
 	 	$userlvl = $_POST['userlvl'];
 	 	$result = editUser($id, $fname, $lname, $username, $password, $email);
@@ -78,6 +79,9 @@
                 </div>
 
                 <div class="form-group">
+                  <?php
+                  if ($found_user['first_login'] == 0){ //if this is your first login, you must change your password
+                    echo "<div class=\"form-text\">Please change your password</div>";}?>
                   <label>Password</label>
                   <input class="input-group=text form-control" placeholder="Password" type="password" name="password" value="<?php echo $found_user['user_pass'];?>">
                 </div>

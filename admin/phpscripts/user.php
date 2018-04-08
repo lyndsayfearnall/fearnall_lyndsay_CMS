@@ -2,7 +2,6 @@
   function createUser($fname, $lname, $username, $password, $email, $userlvl) {
     include('connect.php');
     $userString = "INSERT INTO tbl_user VALUES(NULL, '{$fname}', '{$lname}', '{$username}', '{$password}', '{$email}', NULL, '{$userlvl}', 'no', 0, 0)";
-    //echo $userString;
     $userQuery = mysqli_query($link, $userString);
     if($userQuery){
       redirect_to("admin_manageUsers.php");
@@ -32,6 +31,9 @@
     $updatestring = "UPDATE tbl_user SET user_fname='{$fname}', user_lname='{$lname}', user_name='{$username}', user_pass='{$password}', user_email='{$email}' WHERE user_id={$id}";
     //echo $updatestring;
     $updatequery = mysqli_query($link, $updatestring);
+    //set first-login to false so redirects to index after first login
+    $update = "UPDATE tbl_USER SET first_login=1 WHERE user_id={$id}";
+    $updatequery = mysqli_query($link, $update);
     if($updatequery){
       redirect_to("adminIndex.php");
     }else{

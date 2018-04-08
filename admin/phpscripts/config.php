@@ -5,4 +5,6 @@
   require_once('sessions.php');
   require_once('user.php');
   require_once('movie.php');
+  require_once('mail.php');
+  require_once('password.php');
 ?>
