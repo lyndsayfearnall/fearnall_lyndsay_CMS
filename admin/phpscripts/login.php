@@ -21,8 +21,7 @@
       // {
       //   echo "nope";
       // }
-
-
+      
       //check how many login attempts
       $logins = $found_user['login_attempts'];
       if ($logins <=3){

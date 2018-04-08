@@ -35,21 +35,21 @@
   <title>Add User</title>
 </head>
 <body class="admin">
-  <?php
-    include('../includes/adminNav.php');
-   ?>
-  <div class="container-fluid">
-    <div class="row">
-      <?php
-        include('../includes/adminSidebar.php')
-       ?>
+    <?php
+      include('../includes/adminNav.php');
+     ?>
+    <div class="container-fluid">
+      <div class="row">
+        <?php
+          include('../includes/adminSidebar.php')
+         ?>
 
-       <div class="col-10 mt-1" id="addUser">
-         <div class="ml-2 mt-4 mb-5 card">
-           <div class="card-header">
-             <h1>Add a User</h1>
-           </div>
-            <div class="card-body">
+         <div class="col-10 adminMainBody mt-1 addUser">
+           <div class="ml-2 mt-4 card">
+             <div class="card-header">
+               <h1>Add a Movie</h1>
+             </div>
+             <div class="card-body">
               <?php if(!empty($message)){echo $message;} ?>
             	<form action="admin_addUser.php" method="post" autocomplete="off">
                 <div class="form-group">
@@ -88,13 +88,11 @@
 
             		<button type="submit" name="submit" value="Create User" class="btn btn-primary">Create User</button>
             	</form>
-
             </div>
-         </div>
-       </div>
-
-    </div>
-  </div>
+          </div>
+        </div>
+     </div>
+   </div>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

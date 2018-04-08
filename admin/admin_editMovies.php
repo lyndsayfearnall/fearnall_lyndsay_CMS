@@ -50,7 +50,7 @@
                         {$row['movie_name']}&nbsp;&nbsp;
                         </div>
                         <div class=\"col-4 text-center\">
-                          <a class=\"edit\" href=\"admin_editMovie.php?id={$row['movie_id']}\">Edit</a>
+                          <a class=\"edit\" href=\"admin_editall.php?id={$row['movie_id']}\">Edit</a>
                         </div>
                         <div class=\"col-4 text-center\">
                           <a class=\"remove\" href=\"phpscripts/caller.php?caller_id=deleteMovie&id={$row['movie_id']}\">Remove</a>

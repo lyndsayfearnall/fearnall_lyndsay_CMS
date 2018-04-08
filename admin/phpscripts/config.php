@@ -7,4 +7,5 @@
   require_once('movie.php');
   require_once('mail.php');
   require_once('password.php');
+  require_once('single_edit_form.php');
 ?>
