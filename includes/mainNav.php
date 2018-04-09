@@ -10,6 +10,7 @@
       <li class="nav-item"><a class="nav-link" href="index.php?filter=comedy">Comedy</a></li>
       <li class="nav-item"><a class="nav-link" href="index.php?filter=family">Family</a></li>
       <li class="nav-item"><a class="nav-link" href="index.php">All</a></li>
+      <li class="nav-item"><a class="nav-link" href="admin/adminLogin.php"><i class="material-icons" id="loginicon">person</i>Admin Login</a></li>
     </ul>
   </div>
 </nav>
