@@ -1,25 +1,23 @@
 <?php
   ini_set('display_errors', 1);
   error_reporting(E_ALL);
-
   require_once('phpscripts/config.php');
 
   $tbl = "tbl_genre";
-	$genQuery = getAll($tbl);
+  $genQuery = getAll($tbl);
 
-	if(isset($_POST['submit'])){
-		 $title = $_POST['title'];
-		 $poster = $_FILES['poster'];
-     // $trailer = $_FILES['trailer'];
+  if(isset($_POST['submit'])){
+    $title = $_POST['title'];
+     $coverImg = $_FILES['coverImg'];
+     $trailer = $_FILES['trailer'];
      $year = $_POST['year'];
      $storyline = $_POST['storyline'];
      $rating = $_POST['rating'];
      $director = $_POST['director'];
-		 // $uploadMovie = addMovie($title, $poster, $trailer, $year, $storyline, $rating, $director);
-     $uploadMovie = addMovie($title, $poster, $year, $storyline, $rating, $director);
-		 $message = $uploadMovie;
-	}
-
+     $genre = $_POST['genList'];
+     $uploadMovie = addMovie($title, $coverImg, $trailer, $year, $storyline, $rating, $director, $genre);
+     $message = $uploadMovie;
+   }
  ?>
 
 <!DOCTYPE html>
@@ -44,44 +42,39 @@
        ?>
 
        <div class="col-10 adminMainBody mt-1 addUser">
-         <div class="ml-2 mt-4 card">
+         <div class="ml-2 mt-4 mb-5 card">
            <div class="card-header">
              <h1>Add a Movie</h1>
            </div>
            <div class="card-body">
-             <?php if(!empty($message)){echo $message;}?>
-            <form action="admin_addMovie.php" method="post">
+           <?php if(!empty($message)){ echo $message;} ?>
+             <form action="admin_addMovie.php" method="post" enctype="multipart/form-data">
                <div class="form-group">
                  <label>Movie Title</label>
-                <input class="input-group=text form-control" placeholder="Movie Title" type="text" name="title">
+                 <input type="text" name="title" class="input-group=text form-control">
                </div>
-
                <div class="form-group">
-                 <label>Poster Image</label>
+                 <label>Movie Poster</label>
                  <div class="custom-file">
-                     <input type="file" class="custom-file-input" name="poster">
-                     <label class="custom-file-label">Select a file</label>
+                   <input type="file" name="coverImg" type="file" class="custom-file-input">
+                   <label class="custom-file-label" for="coverImg">Select a file</label>
                  </div>
                </div>
-
-               <!-- <div class="form-group">
-                 <label>Trailer</label>
+               <div class="form-group">
+                 <label>Movie Trailer</label>
                  <div class="custom-file">
-                     <input type="file" class="custom-file-input" name="trailer">
-                     <label class="custom-file-label">Select a file</label>
+                   <input type="file" name="trailer" type="file" class="custom-file-input">
+                   <label class="custom-file-label" for="trailer">Select a file</label>
                  </div>
-               </div> -->
-
-               <div class="form-group">
-                 <label>Year</label>
-                 <input class="input-group=text form-control" placeholder="Year" type="number" name="year">
                </div>
-
                <div class="form-group">
-                 <label>Storyline</label>
-                 <textarea class="form-control" name="storyline">Storyline</textarea>
+                 <label>Movie Year</label>
+                 <input class="inut-group=text form-control" placeholder="year" type="number" name="year">
                </div>
-
+               <div class="form-group">
+                <label>Storyline</label>
+                <textarea class="inut-group=text form-control" placeholder="Storyline" type="number" name="storyline"></textarea>
+               </div>
                <div class="form-group">
                  <label>Rating</label>
                  <select class="custom-select" name="rating">
@@ -98,31 +91,27 @@
                     <option value="10">10</option>
                  </select>
                </div>
-
                <div class="form-group">
-                 <label>Movie director</label>
-                 <input class="input-group=text form-control" placeholder="Director" type="text" name="director">
+                 <label>Director</label>
+                 <input type="text" name="director" class="input-group=text form-control">
                </div>
-
-               <!-- <div class="form-group">
-                 <label for="inputGenre">Genre</label>
-                 <select id="inputGenre" class="form-control" name="genList">
-                   <option value="">Select a Genre</option>
+               <div class="form-group">
+                 <label>Genre</label>
+                 <select name="genList" class="custom-select">
+                   <option value="">Please Select a genre </option>
                    <?php
-                     while($row=mysqli_fetch_array($genQuery)){
+                   while($row = mysqli_fetch_array($genQuery)){
                      echo "<option value=\"{$row['genre_id']}\">{$row['genre_name']}</option>";
-                     echo "while";
-                     }
+                    }
                     ?>
                  </select>
-               </div> -->
+              </div>
 
-              <button type="submit" name="submit" value="Update Movie" class="btn btn-primary">Add Movie</button>
+              <button type="submit" name="submit" value="Add Movie" class="btn btn-primary">Add Movie</button>
             </form>
-           </div>
          </div>
        </div>
-
+     </div>
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

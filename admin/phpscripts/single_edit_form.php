@@ -14,9 +14,7 @@
       $dataType = mysqli_fetch_field_direct($result, $i);
       //-> reaches inside data properties
       $fieldname = $dataType -> name;
-      // echo $fieldname. "<br>";
       $fieldtype = $dataType -> type;
-      // echo $fieldtype."<br>";
       //make sure they can't edit id
       if($fieldname != $col){
         echo "
@@ -26,10 +24,8 @@
           echo "
           <input class=\"input-group=text form-control\" type=\"text\" name=\"{$fieldname}\" value=\"{$getResult[$i]}\">
           </div>";
-          echo $fieldtype;
         }else{
           echo "<textarea class=\"form-control\" name=\"{$fieldname}\">{$getResult[$i]}</textarea>";
-          echo $fieldtype;
         }
       }
     }

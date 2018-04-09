@@ -45,7 +45,7 @@
          ?>
 
          <div class="col-10 adminMainBody mt-1 addUser">
-           <div class="ml-2 mt-4 card">
+           <div class="ml-2 mt-4 mb-5 card">
              <div class="card-header">
                <h1>Add a Movie</h1>
              </div>
